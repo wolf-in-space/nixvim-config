@@ -1,6 +1,6 @@
 # My Nixvim config
 
-My neovim dotfiles, using [nixvim](https://github.com/nix-community/nixvim)
+My neovim configuration, using [nixvim](https://github.com/nix-community/nixvim)
 
 ## Try it out
 
