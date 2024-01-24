@@ -8,8 +8,8 @@
     globals = {
       mapleader = " ";
       maplocalleader = " ";
-      #shiftwidth = 4;
-      #tabstop = 4;
+      shiftwidth = 4;
+      tabstop = 4;
     };
 
     keymaps = with extraLib; [
