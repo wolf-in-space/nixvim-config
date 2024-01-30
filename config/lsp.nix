@@ -1,45 +1,45 @@
-{
-  plugins = {
-    lsp = {
-      enable = true;
-      keymaps.lspBuf = {
-        "<leader>lh" = "hover";
-        "<leader>ld" = "definition";
-        "<leader>li" = "implementation";
-        "<leader>lf" = "format";
-        "<leader>lr" = "rename";
-        "<leader>la" = "code_action";
+{ pkgs, ... }: {
+  config = {
+    options = {
+      conceallevel = 1; #for markdown in editor override preview -> obsidian
+    };
+
+    extraPlugins = with pkgs.vimPlugins; [
+      plenary-nvim
+    ];
+
+    plugins = {
+
+      lsp = {
+        enable = true;
+        keymaps.lspBuf = {
+          "<leader>lh" = "hover";
+          "<leader>ld" = "definition";
+          "<leader>li" = "implementation";
+          "<leader>lf" = "format";
+          "<leader>lr" = "rename";
+          "<leader>la" = "code_action";
+        };
+        servers = {
+          rnix-lsp.enable = true; #nix
+          pyright.enable = true; #python
+          tsserver.enable = true; #typescript
+          java-language-server.enable = true; #java
+        };
       };
-      servers = {
-        rnix-lsp.enable = true; #nix
-        pyright.enable = true; #python
-        tsserver.enable = true; #typescript
-        java-language-server.enable = true; #java
+      none-ls.enable = true;
+
+      nix.enable = true;
+      obsidian = {
+        enable = true;
       };
-    };
-    none-ls.enable = true;
 
-    nix.enable = true;
-    obsidian = {
-      enable = true;
-      workspaces = [
-        {
-          name = "Main";
-          path = "~/Obsidian/Main";
-        }
-      ];
+      #RUST
+      rust-tools = {
+        enable = true;
+        inlayHints.onlyCurrentLine = true;
+      };
+      crates-nvim.enable = true;
     };
-    markdown-preview = {
-      enable = true;
-      autoStart = true;
-
-    };
-
-    #RUST
-    rust-tools = {
-      enable = true;
-      inlayHints.onlyCurrentLine = true;
-    };
-    crates-nvim.enable = true;
   };
 }
