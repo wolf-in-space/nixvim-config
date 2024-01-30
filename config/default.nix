@@ -9,6 +9,10 @@
   ];
 
   config = {
+    extraPackages = with pkgs; [
+      ripgrep fd gcc
+    ];
+
     clipboard = {
       register = "unnamedplus";
       providers = {
@@ -16,6 +20,5 @@
         wl-copy.enable = true;
       };
     };
-
   };
 }

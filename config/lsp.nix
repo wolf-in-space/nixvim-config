@@ -20,7 +20,20 @@
     none-ls.enable = true;
 
     nix.enable = true;
-    obsidian.enable = true;
+    obsidian = {
+      enable = true;
+      workspaces = [
+        {
+          name = "Main";
+          path = "~/Obsidian/Main";
+        }
+      ];
+    };
+    markdown-preview = {
+      enable = true;
+      autoStart = true;
+
+    };
 
     #RUST
     rust-tools = {

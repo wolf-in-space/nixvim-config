@@ -3,30 +3,23 @@
     options = {
       number = true;
       relativenumber = true;
+      autoindent = true;
+      smartindent = true;
     };
 
     globals = {
       mapleader = " ";
-      maplocalleader = " ";
-      shiftwidth = 4;
-      tabstop = 4;
     };
 
     keymaps = with extraLib; [
       (key "<C-s>" "w")
+      (keyI "<C-s>" "w")
     ];
 
     plugins = {
       gitsigns.enable = true;
-
       nvim-autopairs.enable = true;
-      comment-nvim = {
-        enable = true;
-        toggler = {
-          line = "<leader>o";
-          block = "<leader>O";
-        };
-      };
+      comment-nvim.enable = true;
     };
   };
 }
