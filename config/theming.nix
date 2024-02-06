@@ -1,6 +1,9 @@
 { pkgs, ... }: {
   config = {
-    colorschemes.catppuccin.enable = true;
+    colorschemes.catppuccin = {
+      enable = true;
+      transparentBackground = true;
+    };
 
     extraPlugins = with pkgs.vimPlugins; [
       nvim-web-devicons
