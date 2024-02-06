@@ -1,15 +1,30 @@
-{ pkgs, ... }: {
+{ pkgs, extraLib, ... }: {
   config = {
     options = {
       conceallevel = 1; #for markdown in editor override preview -> obsidian
     };
 
+    extraPackages = with pkgs; [
+      lldb
+    ];
+
     extraPlugins = with pkgs.vimPlugins; [
       plenary-nvim
     ];
 
-    plugins = {
+    
+    keymaps = with extraLib; [
+      (key "<leader>dc" "DapContinue")
+      (key "<leader>db" "DapToggleBreakpoint")
+      (key "<leader>dt" "DapTerminate")
+      (key "<leader>ds" "DapStepOver")
+      (key "<leader>di" "DapStepInto")
+      (key "<leader>dr" "DapStepOut")
 
+      (key "<leader>du" "lua require('dapui').toggle()")
+    ];
+
+    plugins = {
       lsp = {
         enable = true;
         keymaps.lspBuf = {
@@ -35,11 +50,17 @@
       };
 
       #RUST
-      rust-tools = {
+      rustaceanvim = {
         enable = true;
-        inlayHints.onlyCurrentLine = true;
+        dap.autoloadConfigurations = true;
       };
       crates-nvim.enable = true;
+
+      #DEBUGGING
+      dap = {
+        enable = true;
+        extensions.dap-ui.enable = true;
+      };
     };
   };
 }

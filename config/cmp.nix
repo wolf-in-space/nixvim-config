@@ -3,6 +3,8 @@
     nvim-cmp = {
       enable = true;
       snippet.expand = "luasnip";
+      completion.completeopt = "noselect";
+      preselect = "None";
       sources = [
         { name = "nvim_lsp"; }
         { name = "luasnip"; } #For luasnip users.
